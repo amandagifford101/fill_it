@@ -1,0 +1,18 @@
+* fillit
+** read
+   read in piece from file
+   process piece inso char**
+*** validate
+    check if piece matched against our hardcoded valid pieces
+** recurse
+   start square at 2X2
+*** check
+**** place
+     place piece by modifying board variable
+**** remove
+     remove piece by modifying board variable
+**** grow
+     if not all pieces fit onto the board at the same time
+      remove all that have been placed and make board bigger
+** print
+   loop through the board, printing the pieces with the letters
