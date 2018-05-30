@@ -26,7 +26,7 @@ t_env	*init_env(t_tet	**tets)
 	while (tets[i] != NULL)
 		i++;
 	env->num_tets = i;  
-	i = 1;
+	i = 0;
 	while (i * i < env->num_tets * 4)
 		i++;
 	env->min_board = i;

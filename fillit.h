@@ -119,5 +119,11 @@ void						print_working_area(t_env *env);
 t_tet						**validate(char *file);
 
 void						clear_board(t_env *env);
+
+void						print_env(t_env *env);
+
+void						exit_nicely(t_env *env);
+
+void						free_all(t_env *env);
 #endif
 

@@ -20,6 +20,7 @@ void	print_board(t_env *env)
 	while (i < 11)
 	{
 		ft_putstr(env->board[i]);
+		ft_putchar('\n');
 		i++;
 	}
 }
@@ -41,4 +42,12 @@ void	print_working_area(t_env *env)
 		ft_putchar('\n');
 		i++;
 	}
+}
+
+#include <stdio.h>
+
+void	print_env(t_env *env)
+{
+	printf("min_board:%d row: %d col: %d cur_tet: %c final_tet: %c\n", env->min_board,
+	env->row, env->col, env->cur_tet + 'A', env->num_tets - 1 + 'A');
 }

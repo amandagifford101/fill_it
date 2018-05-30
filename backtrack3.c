@@ -63,7 +63,7 @@ int	can_put_piece(t_env *env)
 		{
 			if (TET == '#')
 			{
-				if (((TET_X + env->col > env->min_board) && (TET_Y + env->row > env->min_board)) ||
+				if (TET_X + env->col >= env->min_board || TET_Y + env->row >= env->min_board ||
 					   	ft_isalpha(env->board[env->row + TET_Y][env->col + TET_X]))
 					return (0);
 			}
@@ -86,8 +86,6 @@ void	put_piece(t_env *env)
 			{
 				env->board[env->row + TET_Y][env->col + TET_X] =
 					env->cur_tet + 'A';
-				print_working_area(env);
-				ft_putchar('\n');
 			}
 			TET_X++;
 		}
@@ -107,8 +105,8 @@ int	animal_style(t_env *env)
 			{
 				put_piece(env);
 				env->cur_tet++;
-				if (env->cur_tet > env->num_tets)
-					return (1);
+				if (env->cur_tet == env->num_tets)
+					exit_nicely(env);
 				animal_style(env);
 			}
 			env->col++;
@@ -126,6 +124,14 @@ int	backtrack_main(t_env *env)
 			return (0);
 		env->min_board++;
 		clear_board(env);
+		env->cur_tet = 0;
 	}
 	return (1);
+}
+
+void	exit_nicely(t_env *env)
+{
+	print_working_area(env);
+	//free all the shit
+	exit(1);
 }
