@@ -6,7 +6,7 @@
 /*   By: agifford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 22:58:40 by agifford          #+#    #+#             */
-/*   Updated: 2018/05/26 19:48:14 by agifford         ###   ########.fr       */
+/*   Updated: 2018/05/29 18:44:11 by agifford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	print_board(t_env *env)
 {
 	int	i;
-	
+
 	i = 0;
 	while (i < 11)
 	{
@@ -42,12 +42,4 @@ void	print_working_area(t_env *env)
 		ft_putchar('\n');
 		i++;
 	}
-}
-
-#include <stdio.h>
-
-void	print_env(t_env *env)
-{
-	printf("min_board:%d row: %d col: %d cur_tet: %c final_tet: %c\n", env->min_board,
-	env->row, env->col, env->cur_tet + 'A', env->num_tets - 1 + 'A');
 }

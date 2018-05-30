@@ -6,54 +6,13 @@
 /*   By: agifford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 11:25:21 by agifford          #+#    #+#             */
-/*   Updated: 2018/05/29 15:25:33 by agifford         ###   ########.fr       */
+/*   Updated: 2018/05/29 21:27:55 by agifford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	remove_piece(t_env *env)
-{
-	int	y;
-	int	x;
-
-	y = 0;
-	while (y < env->min_board)
-	{
-		x = 0;
-		while (x < env->min_board)
-		{
-			if (env->board[y][x] == env->cur_tet + 'A')
-				env->board[y][x] = '.';
-			x++;
-		}
-		y++;
-	}
-	env->cur_tet++;
-}
-
-void	clear_board(t_env *env)
-{
-	int	y;
-	int	x;
-
-	y = 0;
-	while (y < env->min_board)
-	{
-		x = 0;
-		while (x < env->min_board)
-		{
-			if (env->board[y][x] >= 'A' && env->board[y][x] <= 'Z')
-				env->board[y][x] = '.';
-			x++;
-		}
-		y++;
-	}
-	env->cur_tet++;
-}
-
-	
-int	can_put_piece(t_env *env)
+int		can_put_piece(t_env *env)
 {
 	TET_Y = 0;
 	while (TET_Y < 4)
@@ -63,8 +22,9 @@ int	can_put_piece(t_env *env)
 		{
 			if (TET == '#')
 			{
-				if (TET_X + env->col >= env->min_board || TET_Y + env->row >= env->min_board ||
-					   	ft_isalpha(env->board[env->row + TET_Y][env->col + TET_X]))
+				if (TET_X + env->col >= env->min_board ||
+						TET_Y + env->row >= env->min_board ||
+					ft_isalpha(env->board[env->row + TET_Y][env->col + TET_X]))
 					return (0);
 			}
 			TET_X++;
@@ -93,7 +53,7 @@ void	put_piece(t_env *env)
 	}
 }
 
-int	animal_style(t_env *env)
+int		animal_style(t_env *env)
 {
 	env->row = 0;
 	while (env->row < env->min_board)
@@ -101,7 +61,7 @@ int	animal_style(t_env *env)
 		env->col = 0;
 		while (env->col < env->min_board)
 		{
-			if (can_put_piece(env))	
+			if (can_put_piece(env))
 			{
 				put_piece(env);
 				env->cur_tet++;
@@ -114,9 +74,9 @@ int	animal_style(t_env *env)
 		env->row++;
 	}
 	return (0);
-}	
+}
 
-int	backtrack_main(t_env *env)
+int		backtrack_main(t_env *env)
 {
 	while (!(animal_style(env)))
 	{
